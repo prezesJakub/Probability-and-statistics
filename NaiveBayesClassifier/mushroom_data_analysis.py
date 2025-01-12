@@ -67,7 +67,6 @@ def analyze_feature_importance(draw_plots=False):
     plt.show()
 
 if __name__ == "__main__":
-    from data_processing import load_mushroom_data
     mushroom_data = load_mushroom_data()
    # analyze_missing_values()
    # analyze_class_proportion()

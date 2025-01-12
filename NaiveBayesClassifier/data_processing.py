@@ -12,6 +12,7 @@ def load_iris_data():
     iris = load_iris()
     data = pandas.DataFrame(data=iris.data, columns=iris.feature_names)
     data['target'] = iris.target
+    data['target'] = data['target'].map({0: 'setosa', 1: 'versicolor', 2: 'virginica'})
     return data
 
 
