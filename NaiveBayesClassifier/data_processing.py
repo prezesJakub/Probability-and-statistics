@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 
 def load_mushroom_data():
     data = pandas.read_csv("data/mushrooms.csv")
+    data['class'] = data['class'].map({'e': 'jadalne', 'p': 'niejadalne'})
     return data
 
 
