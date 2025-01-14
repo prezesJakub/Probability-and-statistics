@@ -7,11 +7,10 @@ from sklearn.metrics import classification_report
 def main():
     mushroom_data = load_mushroom_data()
 
-    mushroom_data['target'] = mushroom_data['class'].map({'e': 0, 'p': 1})
-    X = mushroom_data.drop(columns=['class', 'target'])
-    y = mushroom_data['target']
+    X = mushroom_data.drop(columns=['class'])
+    y = mushroom_data['class']
 
-    X_train, X_test, y_train, y_test = split_data(mushroom_data, target_column='target')
+    X_train, X_test, y_train, y_test = split_data(mushroom_data, target_column='class')
 
     model = MultinomialNaiveBayesClassifier()
     model.fit(X_train, y_train)
