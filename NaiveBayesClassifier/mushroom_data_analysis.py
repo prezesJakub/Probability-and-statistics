@@ -12,8 +12,7 @@ def analyze_missing_values():
 
 def analyze_class_proportion():
     print("Proporcja grzybów jadalnych i trujących:")
-    mushroom_data['class_label'] = mushroom_data['class'].map({'e': 'jadalne', 'p': 'trujące'})
-    value_counts = mushroom_data['class_label'].value_counts()
+    value_counts = mushroom_data['class'].value_counts()
     print(value_counts)
 
     ax = value_counts.plot(kind='bar', title='Proporcja grzybów')
@@ -45,14 +44,13 @@ def analyze_feature_distribution(draw_plots=False):
         plt.show()
 
 def analyze_feature_importance(draw_plots=False):
-    mushroom_data['jadalność'] = mushroom_data['class'].map({'e': 'jadalne', 'p': 'trujące'})
 
     categorical_columns = mushroom_data.select_dtypes(include=['object']).columns
 
     for column in categorical_columns:
         if draw_plots:
             plt.figure()
-            ax = seaborn.countplot(x=column, hue='jadalność', data=mushroom_data)
+            ax = seaborn.countplot(x=column, hue='class', data=mushroom_data)
             plt.title(f'Porównanie rozkładu cechy: {column}')
             plt.xlabel(f'Wartości cechy: {column}')
             plt.ylabel('Liczba wystąpień')
